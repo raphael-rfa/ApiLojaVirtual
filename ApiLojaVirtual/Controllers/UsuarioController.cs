@@ -1,6 +1,5 @@
-﻿using ApiLojaVirtual.Data.Context;
-using ApiLojaVirtual.Data.Entidades;
-using Microsoft.AspNetCore.Authorization;
+﻿using Data;
+using Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SendGrid;

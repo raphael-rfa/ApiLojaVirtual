@@ -1296,6 +1296,32 @@
             "rid": "win"
           }
         }
+      },
+      "Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Data.dll": {}
+        }
+      },
+      "Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repository.dll": {}
+        }
       }
     }
   },
@@ -4038,15 +4064,27 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Data/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary/Data.csproj",
+      "msbuildProject": "../ClassLibrary/Data.csproj"
+    },
+    "Repository/1.0.0": {
+      "type": "project",
+      "path": "../Repository/Repository.csproj",
+      "msbuildProject": "../Repository/Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Data >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.1",
       "Microsoft.AspNetCore.OpenApi >= 7.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.1",
+      "Repository >= 1.0.0",
       "SendGrid >= 9.28.1",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -4057,11 +4095,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\Tutoriais Microsoft\\ApiLojaVirtual\\ApiLojaVirtual\\ApiLojaVirtual.csproj",
+      "projectUniqueName": "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\ApiLojaVirtual\\ApiLojaVirtual\\ApiLojaVirtual.csproj",
       "projectName": "ApiLojaVirtual",
-      "projectPath": "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\Tutoriais Microsoft\\ApiLojaVirtual\\ApiLojaVirtual\\ApiLojaVirtual.csproj",
+      "projectPath": "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\ApiLojaVirtual\\ApiLojaVirtual\\ApiLojaVirtual.csproj",
       "packagesPath": "C:\\Users\\55389\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\Tutoriais Microsoft\\ApiLojaVirtual\\ApiLojaVirtual\\obj\\",
+      "outputPath": "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\ApiLojaVirtual\\ApiLojaVirtual\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\55389\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4077,7 +4115,14 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\ApiLojaVirtual\\ClassLibrary\\Data.csproj": {
+              "projectPath": "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\ApiLojaVirtual\\ClassLibrary\\Data.csproj"
+            },
+            "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\ApiLojaVirtual\\Repository\\Repository.csproj": {
+              "projectPath": "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\ApiLojaVirtual\\Repository\\Repository.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

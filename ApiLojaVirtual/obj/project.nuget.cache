@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Kf5iPPH4rfavDCG9NirYHdrHYy1cVrhATHHY9A7xdGAwXKNls5VZjkTZPEm9Twf6CEB3ucNnv2xDqDZk4czODQ==",
+  "dgSpecHash": "XfixrDVuVTKdPulZswci9JJSk7KCc8vnb0oCm29Ea2wwi1cZHHnKAEVAA91rInZTQJOzAZhR/zn8Uk90dZ0/+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\Tutoriais Microsoft\\ApiLojaVirtual\\ApiLojaVirtual\\ApiLojaVirtual.csproj",
+  "projectFilePath": "C:\\Users\\55389\\OneDrive\\Área de Trabalho\\ApiLojaVirtual\\ApiLojaVirtual\\ApiLojaVirtual.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\55389\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\55389\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

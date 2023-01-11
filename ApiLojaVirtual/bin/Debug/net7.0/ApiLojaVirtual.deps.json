@@ -8,11 +8,13 @@
     ".NETCoreApp,Version=v7.0": {
       "ApiLojaVirtual/1.0.0": {
         "dependencies": {
+          "Data": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.1",
           "Microsoft.AspNetCore.OpenApi": "7.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.1",
+          "Repository": "1.0.0",
           "SendGrid": "9.28.1",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
@@ -713,6 +715,22 @@
             "fileVersion": "5.0.20.51904"
           }
         }
+      },
+      "Data/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.1"
+        },
+        "runtime": {
+          "Data.dll": {}
+        }
+      },
+      "Repository/1.0.0": {
+        "dependencies": {
+          "Data": "1.0.0"
+        },
+        "runtime": {
+          "Repository.dll": {}
+        }
       }
     }
   },
@@ -1267,6 +1285,16 @@
       "sha512": "sha512-c1ho9WU9ZxMZawML+ssPKZfdnrg/OjR3pe0m9v8230z3acqphwvPJqzAkH54xRYm5ntZHGG1EPP3sux9H3qSPg==",
       "path": "system.windows.extensions/5.0.0",
       "hashPath": "system.windows.extensions.5.0.0.nupkg.sha512"
+    },
+    "Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

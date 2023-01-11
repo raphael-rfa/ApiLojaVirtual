@@ -1,6 +1,7 @@
-﻿using ApiLojaVirtual.Data.Context;
-using ApiLojaVirtual.Data.Entidades;
+﻿using Data;
+using Data.Models;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Categorias;
 
 namespace ApiLojaVirtual.Controllers
 {
@@ -8,56 +9,27 @@ namespace ApiLojaVirtual.Controllers
     [Route("Api/[Controller]/[Action]")]
     public class CategoriaController : ControllerBase
     {
-        private readonly ApiLojaVirtualContext _context;
+        private readonly ICategoriaRepositorio _repositorio;
 
         public CategoriaController(ApiLojaVirtualContext context)
         {
-            _context = context;
+            this._repositorio = new CategoriaRepositorio(context);
         }
 
         [HttpGet]
         public IActionResult ListaCategorias()
         {
-            var produtos = _context.Produto
-                .Where(x => x.Quantidade > 0 && x.Ativo == true);
+            var categorias = _repositorio.ListarCategorias();
 
-
-            if (produtos != null)
-            {
-                var listaCategorias = new List<Categoria>();
-
-                foreach (var c in produtos)
-                {
-                    listaCategorias.Add(_context.Categoria.Find(c.CategoriaId)!);
-                }
-
-                listaCategorias = listaCategorias.Distinct().ToList();
-
-                return Ok(listaCategorias);
-            }
-
-            return Problem("Nenhum categoria corresponde ao filtro");
+            return categorias != null ? Ok(categorias) : Problem("Sem categorias validas");
         }
 
         [HttpGet]
         public IActionResult CategoriaUrl(string categoriaUrl)
         {
-            var categoria = _context.Categoria.FirstOrDefault(x => x.Url == categoriaUrl);
+            var categoria = _repositorio.CategoriaUrl(categoriaUrl);
 
-            if (categoria != null)
-            {
-                if (categoria.Ativo == true)
-                {
-                    var produtos = _context.Produto.Where(x => x.CategoriaId == categoria.Id);
-
-                    return Ok(produtos);
-                }
-
-                return Problem("Categoria esta inativa");
-            }
-
-            return Problem("Categoria não encontrada");
-
+            return categoria != null ? Ok(categoria) : Problem("Categoria invalida");
         }
     }
 }

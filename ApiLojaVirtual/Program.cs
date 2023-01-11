@@ -1,5 +1,4 @@
-
-using ApiLojaVirtual.Data.Context;
+using Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
