@@ -1,8 +1,6 @@
 ﻿using Data;
 using Data.Models.Entidade;
-using Data.Models.ViewModel;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Repository.Pedidos
 {
@@ -15,34 +13,13 @@ namespace Repository.Pedidos
             _context = context;
         }
 
-        public IEnumerable<Pedido> Pedidos(int userId)
+        public IEnumerable<Pedido> ListarPedidos(int userId)
         {
-                var pedidos = _context.Pedido.Where(x => x.UsuarioId == userId);
-            return pedidos;
-        }
+            var pedidos = _context.Pedido
+                .Include(x => x.PedidoItems)
+                .Where(x => x.UsuarioId == userId);
 
-        public IEnumerable<PedidoViewModel> ListarPedidos(int userId)
-        {
-            var pedidos = Pedidos(userId);
-
-            List<PedidoViewModel>? listaPedidos = new();
-
-            if(pedidos != null)
-            {
-                foreach (var p in pedidos)
-                {
-
-                    PedidoViewModel pedido = new()
-                    {
-                        Pedido = p,
-                        Itens = _context.PedidoItem.Where(x => x.PedidoId == p.Id).ToList()
-                    };
-
-                    listaPedidos.Add(pedido);
-                }
-            }
-
-            return listaPedidos.ToList();
+            return pedidos!;
         }
 
         public bool CriarPedido(ICollection<PedidoItem> itens, int userId)

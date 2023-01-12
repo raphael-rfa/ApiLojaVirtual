@@ -31,14 +31,17 @@ namespace Repository.Categorias
 
         public IEnumerable<Categoria> ListarCategorias()
         {
-            var categoria = _context.Categoria
-                .Where(x => x.Ativo == true).ToList();
+            var categorias = _context.Categoria;
 
-            foreach (var c in categoria)
+            foreach (var categoria in categorias)
             {
-                 c.Produtos = ProdutosValidos(c.Id).ToList();
+                categoria.Produtos = ProdutosValidos(categoria.Id).ToList();
+                categoria.Ativo = categoria.Produtos.Any();
+                _context.SaveChanges();
             }
-            return categoria;
+            var categoriasValidas = categorias.Where(x => x.Ativo == true);
+
+            return categoriasValidas;
         }
     }
 }

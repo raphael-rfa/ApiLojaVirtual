@@ -13,10 +13,10 @@ namespace Data.Models.Entidade
         [Required, MaxLength(256)]
         public string? Login { get; set; }
 
-        [Required, MaxLength(256)]
+        [Required, MaxLength(256), DataType(DataType.EmailAddress)]
         public string? Email { get; set; }
 
-        [Required, MaxLength(256)]
+        [Required, MaxLength(256), DataType(DataType.Password)]
         public string? Senha { get; set; }
         public string? ChaveVerificacao { get; set; }
         public string? LastToken { get; set; }

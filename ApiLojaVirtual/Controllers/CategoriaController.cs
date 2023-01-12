@@ -13,7 +13,7 @@ namespace ApiLojaVirtual.Controllers
 
         public CategoriaController(ApiLojaVirtualContext context)
         {
-            this._repositorio = new CategoriaRepositorio(context);
+            _repositorio = new CategoriaRepositorio(context);
         }
 
         [HttpGet]
