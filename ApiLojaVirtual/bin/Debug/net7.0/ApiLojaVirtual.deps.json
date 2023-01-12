@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v7.0": {
       "ApiLojaVirtual/1.0.0": {
         "dependencies": {
-          "Data": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.1",
           "Microsoft.AspNetCore.OpenApi": "7.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.1",
