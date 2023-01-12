@@ -1,7 +1,9 @@
 ﻿using Data;
-using Data.Models;
+using Data.Models.Entidade;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Pedidos;
+using Repository.Produtos;
 
 namespace ApiLojaVirtual.Controllers
 {
@@ -9,58 +11,28 @@ namespace ApiLojaVirtual.Controllers
     [Route("Api/[Controller]/[Action]")]
     public class PedidoController : Controller
     {
-        private readonly ApiLojaVirtualContext _context;
+        private readonly PedidoRepositorio _repository;
 
         public PedidoController(ApiLojaVirtualContext context)
         {
-            _context = context;
+            _repository = new PedidoRepositorio(context);
         }
 
         [HttpPost]
         [Authorize]
         public IActionResult CriarPedido(ICollection<PedidoItem> itens, int userId)
         {
-            foreach (var item in itens)
-            {
-                Produto? produto = _context.Produto
-                    .Where(x => x.Ativo == true && x.Quantidade >= item.Quantidade)
-                    .FirstOrDefault(x => x.Id == item.ProdutoId);
-
-                if (produto != null)
-                {
-                    produto!.Quantidade -= item.Quantidade;
-
-                    Pedido pedido = new();
-                    pedido.DataPedido = DateTime.Now;
-                    pedido.UsuarioId = userId;
-                    _context.Pedido.Add(pedido);
-                    _context.SaveChanges();
-
-                    item.PedidoId = pedido.Id;
-
-                    _context.PedidoItem.Add(item);
-                    _context.SaveChanges();
-
-                    return Ok("Pedido feito");
-                }
-                return Problem("Produto invalido");
-            }
-            return Problem("Lista Vazia");
+            var pedido = _repository.CriarPedido(itens, userId);
+            return pedido ? Ok("Pedido Criado") : Problem("Pedido não foi criado");
         }
 
         [Authorize]
         [HttpGet]
-        public IActionResult ListarPedidos()
+        public IActionResult ListarPedidos(int userId)
         {
-            var Pedidos = from pedidos in _context.Pedido
-                          join item in _context.PedidoItem on pedidos.Id equals item.PedidoId into p
-                          select new
-                          {
-                              IdPedido = pedidos.Id,
-                              Itens = p.Count()
-                          };
+            var Pedidos = _repository.ListarPedidos(userId);
 
-            return Ok(Pedidos);
+            return Pedidos != null ? Ok(Pedidos) : Problem("Pedidos não encontrados");
         }
     }
 }

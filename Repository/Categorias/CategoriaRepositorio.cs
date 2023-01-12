@@ -1,5 +1,5 @@
 ﻿using Data;
-using Data.Models;
+using Data.Models.Entidade;
 
 namespace Repository.Categorias
 {

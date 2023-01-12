@@ -1,5 +1,5 @@
 ﻿using Data;
-using Data.Models;
+using Data.Models.Entidade;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SendGrid;
