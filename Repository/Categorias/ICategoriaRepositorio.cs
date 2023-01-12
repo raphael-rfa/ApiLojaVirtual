@@ -4,8 +4,7 @@ namespace Repository.Categorias
 {
     public interface ICategoriaRepositorio
     {
-        IEnumerable<Categoria> ListarCategorias();
+        ICollection<Categoria> Categorias();
         IEnumerable<Produto> ProdutosValidos(int categoriaId);
-        Categoria CategoriaUrl(string categoriaUrl);
     }
 }

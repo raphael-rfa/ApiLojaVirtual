@@ -12,9 +12,9 @@ namespace Repository.Produtos
             _context = context;
         }        
 
-        public Produto ProdutoUrl(string produtoUrl)
+        public ICollection<Produto> Produtos()
         {
-            return _context.Produto.FirstOrDefault(x => x.Url == produtoUrl)!;
+            return _context.Produto.ToList();
         }
     }
 }

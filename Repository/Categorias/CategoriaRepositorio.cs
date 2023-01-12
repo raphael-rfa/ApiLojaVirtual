@@ -1,5 +1,6 @@
 ﻿using Data;
 using Data.Models.Entidade;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository.Categorias
 {
@@ -12,36 +13,15 @@ namespace Repository.Categorias
             _context = context;
         }
 
-        public Categoria CategoriaUrl(string categoriaUrl)
-        {
-
-            var categoria = _context.Categoria.FirstOrDefault(x => x.Url == categoriaUrl && x.Ativo == true)!;
-            if(categoria != null)
-            {
-                categoria.Produtos = ProdutosValidos(categoria.Id).ToList();
-                return categoria;
-            }
-            return categoria!;
-        }
-
         public IEnumerable<Produto> ProdutosValidos(int categoriaId)
         {
-            return _context.Produto.Where(x => x.CategoriaId == categoriaId && x.Ativo == true);
+            return _context.Produto.Where(x => x.CategoriaId == categoriaId && x.Ativo == true) ?? null!;
         }
 
-        public IEnumerable<Categoria> ListarCategorias()
+        public ICollection<Categoria> Categorias()
         {
-            var categorias = _context.Categoria;
-
-            foreach (var categoria in categorias)
-            {
-                categoria.Produtos = ProdutosValidos(categoria.Id).ToList();
-                categoria.Ativo = categoria.Produtos.Any();
-                _context.SaveChanges();
-            }
-            var categoriasValidas = categorias.Where(x => x.Ativo == true);
-
-            return categoriasValidas;
+            return _context.Categoria
+                .Include(x => x.Produtos).ToList();
         }
     }
 }

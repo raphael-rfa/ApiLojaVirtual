@@ -1,6 +1,6 @@
 ﻿using Data;
 using Microsoft.AspNetCore.Mvc;
-using Repository.Produtos;
+using Service.Services;
 
 namespace ApiLojaVirtual.Controllers
 {
@@ -8,27 +8,19 @@ namespace ApiLojaVirtual.Controllers
     [Route("Api/[Controller]/[Action]")]
     public class ProdutoController : ControllerBase
     {
-        private IProdutosRepositorio _repository;
+        private readonly IProdutoService _service;
+        
         public ProdutoController(ApiLojaVirtualContext context)
         {
-            this._repository = new RepositorioProdutos(context);
+            _service = new ProdutoService(context);
         }
 
         [HttpGet]
         public IActionResult ProdutoUrl(string produtoUrl)
         {
-            var produto = _repository.ProdutoUrl(produtoUrl);
+            var produto = _service.ProdutoUrl(produtoUrl);
 
-            if (produto != null)
-            {
-                if (produto.Ativo == true)
-                {
-                    return Ok(produto);
-                }
-
-                return Problem("Sem Estoque");
-            }
-            return Problem("Produto não encontrado");
+            return produto != null ? Ok(produto) : Problem("Produto não encontrado");
         }        
     }
 }

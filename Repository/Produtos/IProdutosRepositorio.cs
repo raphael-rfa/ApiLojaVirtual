@@ -4,6 +4,6 @@ namespace Repository.Produtos
 {
     public interface IProdutosRepositorio
     {
-        Produto ProdutoUrl(string produtoUrl);
+        ICollection<Produto> Produtos();
     }
 }

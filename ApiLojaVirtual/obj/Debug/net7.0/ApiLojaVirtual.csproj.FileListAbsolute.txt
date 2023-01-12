@@ -162,3 +162,5 @@ C:\Users\55389\OneDrive\Área de Trabalho\ApiLojaVirtual\ApiLojaVirtual\bin\Debu
 C:\Users\55389\OneDrive\Área de Trabalho\ApiLojaVirtual\ApiLojaVirtual\bin\Debug\net7.0\Data.pdb
 C:\Users\55389\OneDrive\Área de Trabalho\ApiLojaVirtual\ApiLojaVirtual\bin\Debug\net7.0\Repository.dll
 C:\Users\55389\OneDrive\Área de Trabalho\ApiLojaVirtual\ApiLojaVirtual\bin\Debug\net7.0\Repository.pdb
+C:\Users\55389\OneDrive\Área de Trabalho\ApiLojaVirtual\ApiLojaVirtual\bin\Debug\net7.0\Service.dll
+C:\Users\55389\OneDrive\Área de Trabalho\ApiLojaVirtual\ApiLojaVirtual\bin\Debug\net7.0\Service.pdb
